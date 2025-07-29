@@ -1,39 +1,37 @@
 #include <iostream>
+#include <string>
 #include <algorithm>
+#include <cctype>
 
 using namespace std;
 
-int main()
+int main ()
 {
     int t;
     cin>>t;
-
     while (t--)
     {
         int n;
         cin>>n;
 
-        int a[n];
+        string s;
+        cin>>s;
 
-        for (int i=0; i<n; i++)
+        for (char &ss : s)
         {
-            cin>>a[i];
+            ss=tolower(ss);
         }
 
-        bool found=false;
-
-        for (int i=1; i<n; i++)
+        string ns ="";
+        for (char ss : s) 
         {
-            int mn= min (a[i], a[i-1]);
-            int mx= max (a[i], a[i-1]);
-
-            if (2*mn>mx)
+            if (ns.empty() || ns.back() != ss)
             {
-                found=true;
-                break;
+                ns+=ss;
             }
         }
-        if (found)
+
+        if (ns=="meow")
         {
             cout<<"YES"<<endl;
         }
